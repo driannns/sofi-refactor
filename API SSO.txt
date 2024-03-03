@@ -1,0 +1,40 @@
+API SSO
+------------
+Collecting in Postman : 
+https://www.getpostman.com/collections/f730030c5c43851f82d9
+
+
+1. API
+-SSO Login 
+URL : https://dev-gateway.telkomuniversity.ac.id/issueauth
+Method : Post
+Parameter : username dan password igracias
+username@NIM
+-SSO Profile
+URL : https://dev-gateway.telkomuniversity.ac.id/a277b3eca77891ca5d2f96ab73e98c06
+Method : Get
+Parameter : -
+Autorization : Barer Token ( return token dr sso login )
+
+2. Browser yang bisa di akses untuk API :
+mozila, opera, ucweb, postmanruntima sama guzzlehttp
+
+3. Tools yang bisa di akses untuk API :
+Postman, CURL dan Guzzle
+
+4. Inputan parameter 
+>>Development 
+- username : username igrcacias
+- passowrd : username igracias + @ + nip tanpa strip
+
+example 
+- username : ujangxx
+- passowrd : ujangxx@12345
+
+>>Production/ Live 
+- username : username igrcacias
+- passowrd : password igracias
+
+example
+- username : ujangxx
+- password : Ujang123.

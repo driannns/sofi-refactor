@@ -1,0 +1,37 @@
+1. GET : /lecturers/getAll
+   Response : nip,kodeDosen,nama,jfa,kk
+2. GET : /lecturers/{kodeDosen}
+   Response : nip,kodeDosen,nama,jfa,kk
+3. GET : /students/getAll (FRI Only and take MK TA)
+   Response : nim, 
+              nama,
+			  kelas,
+			  prodi,
+			  status_kelulusan : {tingkat1-4},
+			  TAK, 
+			  EPRT, 
+			  IPK, 
+4. GET : /students/{prodi} (FRI Only and take MK TA)
+   Response : nim, 
+              nama,
+			  kelas,
+			  prodi,
+			  status_kelulusan : {tingkat1-4},
+			  TAK, 
+			  EPRT, 
+			  IPK, 
+5. GET : /students/{prodi}/{nim} (FRI Only and take MK TA)
+   Response : nim, 
+              nama,
+			  kelas,
+			  prodi,
+			  status_kelulusan : {tingkat1-4},
+			  TAK, 
+			  EPRT, 
+			  IPK, 	
+6. GET : /skta/getAll (FRI Only)
+	Response : nim, 
+              kodeDosen1,
+			  kodeDosen2,
+			  JudulTA,
+			  kk,
