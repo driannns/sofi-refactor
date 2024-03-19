@@ -39,7 +39,8 @@ class TeamController extends AppBaseController
      */
     public function index(Request $request)
     {
-
+//         dd($isIndividu = auth()->user()->student->team->isIndividu(
+// auth()->user()->student->nim));
         //check mahasiswa sudah daftar sidang atau belum
         $sidang = Sidang::where('mahasiswa_id', Auth::user()->student->nim)
             ->first();

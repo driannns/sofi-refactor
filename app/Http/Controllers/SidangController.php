@@ -243,6 +243,7 @@ class SidangController extends AppBaseController
         $lecturers = Lecturer::with('user')->orderBy('code')->get(); //dapet output employeeID API Lecturer
         $userInfo = Auth::user()->student; // JWT SOFI Lama
         $period = Period::getPeriodNow(); //Ambil periode sekarang
+        $allPeriod = Period::getAllPeriod();
 
         $sidang = Sidang::isExist($userInfo->nim); //API Afif
         if ($sidang != null) {
@@ -265,7 +266,7 @@ class SidangController extends AppBaseController
         // dd($parameter);
         //request data from igracias
         $client = new \GuzzleHttp\Client(['verify' => false]);
-        $response = $client->request('GET', config('app.api.getAllStudents') . '/' . "2223-1" . '/' . $userInfo->nim);
+        $response = $client->request('GET', config('app.api.getAllStudents') . '/' . "2324-2" . '/' . $userInfo->nim);
         $dataStudent = json_decode($response->getBody());
         if ($dataStudent->data == null) {
             Flash::error('Anda tidak terdaftar di periode akademik ini');
@@ -281,7 +282,7 @@ class SidangController extends AppBaseController
 
         //request data form igracias -> lecturer_status
         $client = new \GuzzleHttp\Client(['verify' => false]);
-        $response = $client->request('GET', config('app.api.getStatusLog') . '/' . "$parameter->value" . '/' . $userInfo->nim);
+        $response = $client->request('GET', config('app.api.getStatusLog') . '/' . "2324-2" . '/' . $userInfo->nim);
         $dataLecturer = json_decode($response->getBody());
         if ($dataLecturer->data == null) {
             Flash::error('Data anda tidak ditemukan. Silahkan hubungi admin');
@@ -299,7 +300,7 @@ class SidangController extends AppBaseController
             ->causedBy(Auth::user())
             ->log('Sidang:Create_Form');
 
-        return view('sidangs.create', compact('peminatans', 'sidang', 'lecturers', 'userInfo', 'period', 'bimbingan1', 'bimbingan2', 'sks_lulus', 'sks_belum_lulus', 'lecturer_status'));
+        return view('sidangs.create', compact('peminatans', 'sidang', 'lecturers', 'userInfo', 'period', "allPeriod", 'bimbingan1', 'bimbingan2', 'sks_lulus', 'sks_belum_lulus', 'lecturer_status'));
     }
 
     /**
@@ -547,6 +548,7 @@ class SidangController extends AppBaseController
      */
     public function update($id, UpdateSidangRequest $request)
     {
+        // dd($request->all());
         $sidang = $this->sidangRepository->find($id);
         $input = $request->all();
         $userInfo = Auth::user();

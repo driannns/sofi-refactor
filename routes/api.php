@@ -27,6 +27,9 @@ Route::get('/allPeriod', [SidangController::class, "getAllPeriod"]);
 
 // Student
 Route::get('/student/{id}', [StudentController::class, "detail"]);
+Route::patch('/student/update/{id}', [StudentController::class, "update "]);
+
+Route::get('/lecturer', [StudentController::class, "getLecturer"]);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return [

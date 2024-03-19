@@ -72,7 +72,6 @@ class LoginController extends Controller
             return redirect($this->redirectPath());
         }
         catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
-            dd($e);
             //if user not exist
             $resultRegist = RegisterController::registerUserSSO($username,$userLoged->token);
             if(!$resultRegist){
@@ -86,7 +85,6 @@ class LoginController extends Controller
             }
         }
         catch (\Exception $e) {
-            dd($e);
             // dd($response);
             activity()
                 ->causedBy(Auth::user())

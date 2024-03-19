@@ -22,25 +22,6 @@ if(env('APP_ENV') == 'production'){
 }
 
 Route::get('/', function () {
-	$userGakadaSidang = [];
-	$students = Student::all();
-	$sidangs = Sidang::all();
-
-	foreach($students as $student){
-		$studentHasSidang = false;
-		foreach ($sidangs as $sidang) {
-			if ($student->nim == $sidang->mahasiswa_id) {
-				// If the student has a corresponding entry in $sidangs, set the flag to true
-				$studentHasSidang = true;
-				break; // Exit the inner loop since we found a match
-			}
-		}
-			if (!$studentHasSidang) {
-			$userGakadaSidang[] = $student->nim;
-		}
-	}
-
-	dd($userGakadaSidang);
 	return view('welcome');
 });
 

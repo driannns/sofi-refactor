@@ -164,7 +164,7 @@ class DokumenLogController extends AppBaseController
         $sidang = Sidang::where('mahasiswa_id', Auth::user()->student->nim)
             ->orderBy('id', 'desc')
             ->first();
-
+      
         if (empty($sidang)) {
             return redirect()->back()->withError('Anda belum mendaftar sidang!');
         }

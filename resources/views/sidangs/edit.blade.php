@@ -19,6 +19,7 @@
     <div class="container-fluid">
          <div class="animated fadeIn">
              @include('coreui-templates::common.errors')
+             @include('flash::message')
              @if (Session::has('error'))
                   <div class="alert alert-danger" role="alert">
                       {{Session::get('error')}}
